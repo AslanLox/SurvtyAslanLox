@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опросник: Қазақстан геологтары</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .result {
+            font-weight: bold;
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        input[type="submit"] {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            form {
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Опросник: Қазақстан геологтары</h1>
+
+    <form id="quiz-form">
+        <!-- Вопрос 1 -->
+        <div class="question">
+            <p>1. Қаныш Сәтпаев кім болған?</p>
+            <input type="radio" id="q1a1" name="q1" value="2">
+            <label for="q1a1">1. Ғалым</label><br>
+            <input type="radio" id="q1a2" name="q1" value="correct">
+            <label for="q1a2">2. Геолог</label><br>
+            <input type="radio" id="q1a3" name="q1" value="3">
+            <label for="q1a3">3. Археолог</label>
+        </div>
+
+        <!-- Вопрос 2 -->
+        <div class="question">
+            <p>2. Қаныш Сәтпаев Қазақстанда қай саланы зерттеді?</p>
+            <input type="radio" id="q2a1" name="q2" value="correct">
+            <label for="q2a1">1. Қазба байлықтар</label><br>
+            <input type="radio" id="q2a2" name="q2" value="2">
+            <label for="q2a2">2. Көлдер</label><br>
+            <input type="radio" id="q2a3" name="q2" value="3">
+            <label for="q2a3">3. Тарих</label>
+        </div>
+
+        <!-- Вопрос 3 -->
+        <div class="question">
+            <p>3. Қаныш Сәтпаев атындағы көше қай қалада бар?</p>
+            <input type="radio" id="q3a1" name="q3" value="correct">
+            <label for="q3a1">1. Алматы</label><br>
+            <input type="radio" id="q3a2" name="q3" value="2">
+            <label for="q3a2">2. Нұр-Сұлтан</label><br>
+            <input type="radio" id="q3a3" name="q3" value="3">
+            <label for="q3a3">3. Қарағанды</label>
+        </div>
+
+        <!-- Вопрос 4 -->
+        <div class="question">
+            <p>4. Қаныш Сәтпаев қай минералды зерттеді?</p>
+            <input type="radio" id="q4a1" name="q4" value="correct">
+            <label for="q4a1">1. Мыс</label><br>
+            <input type="radio" id="q4a2" name="q4" value="2">
+            <label for="q4a2">2. Алтын</label><br>
+            <input type="radio" id="q4a3" name="q4" value="3">
+            <label for="q4a3">3. Күміс</label>
+        </div>
+
+        <!-- Вопрос 5 -->
+        <div class="question">
+            <p>5. Қаныш Сәтпаев қандай маңызды ғылыми мекемені құрды?</p>
+            <input type="radio" id="q5a1" name="q5" value="correct">
+            <label for="q5a1">1. Геологиялық институт</label><br>
+            <input type="radio" id="q5a2" name="q5" value="2">
+            <label for="q5a2">2. Әдебиет институты</label><br>
+            <input type="radio" id="q5a3" name="q5" value="3">
+            <label for="q5a3">3. Тарих институты</label>
+        </div>
+
+        <input type="submit" value="Тексеру">
+    </form>
+
+    <script>
+        document.getElementById("quiz-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Остановка отправки формы
+
+            let score = 0; // Счётчик правильных ответов
+            let totalQuestions = 5; // Общее количество сұрақтар
+
+            // Проверяем ответы
+            const answers = document.querySelectorAll('input[type="radio"]:checked');
+            answers.forEach(answer => {
+                if (answer.value === "correct") {
+                    score++;
+                    answer.parentElement.style.color = "green"; // Правильный ответ
+                } else {
+                    answer.parentElement.style.color = "red"; // Неправильный ответ
+                }
+            });
+
+            // Показать результат
+            alert("Сіз " + totalQuestions + " сұрақтың " + score + " дұрыс жауап бердіңіз.");
+        });
+    </script>
+
+</body>
+</html>
